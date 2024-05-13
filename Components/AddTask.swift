@@ -10,8 +10,23 @@ import SwiftUI
 struct AddTask: View {
     var body: some View {
         NavigationView {
-            Text("")
-                .navigationTitle("Make a request")
+            List {
+                Section {
+                    Picker(selection: .constant(1), label: Text("Service type")) {
+                        Text("Cooking").tag(1)
+                        Text("Sentitizing").tag(2)
+                    }
+                    TextField("Senior Name", text: .constant(""))
+                    DatePicker("Request Time", selection: .constant(Date()))
+                }
+                Section {
+                    Button{} label: {
+                        Text("Book service")
+                    }
+                } footer: {
+                    Text("Click to send booking message.")
+                }
+            }.navigationTitle("Assign Service").navigationBarTitleDisplayMode(.inline)
         }
     }
 }
