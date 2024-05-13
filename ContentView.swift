@@ -9,12 +9,10 @@ struct ContentView: View {
             Group {
                 switch (selection) {
                 case 0:
-                    Tracking()
+                    Today()
                 case 1:
                     Text("message")
                 case 2:
-                    Text("Task")
-                case 3:
                     Text("Profile")
                 default:
                     Text("error")

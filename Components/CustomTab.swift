@@ -15,7 +15,6 @@ struct CustomTab: View {
         VStack {
             HStack {
                 HStack {
-                    Spacer()
                     Button {
                         self.selection = 0
                     } label: {
@@ -28,8 +27,8 @@ struct CustomTab: View {
                                 .foregroundStyle(.gray)
                         }
                         
-                    }
-                    Spacer()
+                    }.frame(width: 52)
+                    
                     Button {
                         self.selection = 1
                     } label: {
@@ -40,47 +39,33 @@ struct CustomTab: View {
                             Image(systemName: "envelope.fill")
                                 .foregroundStyle(.gray)
                         }
-                    }
-                    Spacer()
+                    }.frame(width: 52)
+                    
+                    Button {
+                        self.selection = 2
+                    } label: {
+                        if selection == 2 {
+                            Image(systemName: "person.fill")
+                                .foregroundStyle(.tint)
+                        } else {
+                            Image(systemName: "person.fill")
+                                .foregroundStyle(.gray)
+                        }
+                    }.frame(width: 52)
                 }
+                
+                Spacer()
                 
                 Button {
                     self.showAddTaskSheet.toggle()
                 } label: {
                     Image(systemName: "plus")
-                        .frame(width: 24, height: 24)
+                        .frame(width: 36, height: 36)
                         .foregroundStyle(.white)
                         .padding(.all, 8)
-                }.background(.tint).clipShape(Circle())
+                }.background(.tint).clipShape(Circle()).shadow(radius: 2)
                 
-                HStack {
-                    Spacer()
-                    Button {
-                        self.selection = 2
-                    } label: {
-                        if selection == 2 {
-                            Image(systemName: "list.bullet.rectangle.portrait.fill")
-                                .foregroundStyle(.tint)
-                        } else {
-                            Image(systemName: "list.bullet.rectangle.portrait.fill")
-                                .foregroundStyle(.gray)
-                        }
-                    }
-                    Spacer()
-                    Button {
-                        self.selection = 3
-                    } label: {
-                        if selection == 3 {
-                            Image(systemName: "person.fill")
-                                .foregroundStyle(.tint)
-                        } else {
-                            Image(systemName: "person.fill")
-                                .foregroundStyle(.gray)
-                        }
-                    }
-                    Spacer()
-                }
-            }.padding(.vertical, 8)
+            }.padding(.vertical, 8).padding(.horizontal)
         }.frame(minWidth: 0, maxWidth: .infinity).background(.thinMaterial)
     }
 }

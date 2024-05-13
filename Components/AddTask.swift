@@ -11,7 +11,7 @@ struct AddTask: View {
     var body: some View {
         NavigationView {
             Text("")
-                .navigationTitle("Add Task")
+                .navigationTitle("Make a request")
         }
     }
 }
