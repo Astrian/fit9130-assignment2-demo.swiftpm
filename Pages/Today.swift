@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct Today: View {
+    @Binding var showTab: Bool
+    @State private var showDetail = false
+    
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 Color("ListBackground").edgesIgnoringSafeArea(.all)
                 ScrollView {
@@ -23,12 +26,16 @@ struct Today: View {
                                     .padding(.horizontal)
                                 Spacer()
                             }.padding(.horizontal).padding(.top)
-                            NavigationLink(destination: ServiceDetail()) {
-                                RequestCardAtToday(requestTitle: "Care sequence", requestTime: "11:00 am")
-                            }
-                            NavigationLink(destination: ServiceDetail()) {
-                                RequestCardAtToday(requestTitle: "Face-to-face consultation", requestTime: "4:00 pm")
-                            }
+                            RequestCardAtToday(requestTitle: "Care sequence", requestTime: "11:00 am")
+                                .onTapGesture {
+                                    self.showTab = false
+                                    self.showDetail = true
+                                }
+                            RequestCardAtToday(requestTitle: "Face-to-face consultation", requestTime: "4:00 pm")
+                                .onTapGesture {
+                                    self.showTab = false
+                                    self.showDetail = true
+                                }
                         }
                         Divider().padding()
                         Group {
@@ -40,15 +47,21 @@ struct Today: View {
                                     .padding(.horizontal)
                                 Spacer()
                             }.padding(.horizontal)
-                            NavigationLink(destination: ServiceDetail()) {
-                                RequestCardAtToday(requestTitle: "Volunteer evaluating", requestTime: "3 days later")
-                            }
-                            NavigationLink(destination: ServiceDetail()) {
-                                RequestCardAtToday(requestTitle: "Customize service", requestTime: "18th May")
-                            }
-                            NavigationLink(destination: ServiceDetail()) {
-                                RequestCardAtToday(requestTitle: "Cooking", requestTime: "29th May")
-                            }
+                            RequestCardAtToday(requestTitle: "Volunteer evaluating", requestTime: "3 days later")
+                                .onTapGesture {
+                                    self.showTab = false
+                                    self.showDetail = true
+                                }
+                            RequestCardAtToday(requestTitle: "Customize service", requestTime: "18th May")
+                                .onTapGesture {
+                                    self.showTab = false
+                                    self.showDetail = true
+                                }
+                            RequestCardAtToday(requestTitle: "Cooking", requestTime: "29th May")
+                                .onTapGesture {
+                                    self.showTab = false
+                                    self.showDetail = true
+                                }
                             
                             Button{} label: {
                                 HStack {
@@ -58,14 +71,20 @@ struct Today: View {
                                 }.padding().padding(.horizontal)
                             }
                         }
+                        
                     }
                 }
             }
+                .navigationDestination(isPresented: self.$showDetail) {
+                    ServiceDetail()
+                }
+                .onAppear {
+                    showTab = true
+                }
+                
                 .navigationTitle("Today")
         }
+        
     }
 }
 
-#Preview {
-    Today()
-}

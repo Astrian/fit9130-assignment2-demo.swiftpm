@@ -40,6 +40,12 @@ struct ServiceDetail: View {
             } header: {
                 Text("Volunteer detail")
             }
+            
+            Section {
+                NavigationLink(destination: Diary()) {
+                    Text("View diary")
+                }
+            }
         } .navigationTitle("Service detail")
             .navigationBarTitleDisplayMode(.inline)
     }
