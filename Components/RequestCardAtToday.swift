@@ -14,7 +14,7 @@ struct RequestCardAtToday: View {
         ZStack {
             HStack {
                 VStack(alignment: .leading) {
-                    Text(self.requestTitle).bold()
+                    Text(self.requestTitle).foregroundStyle(.foreground).bold()
                     Text(self.requestTime)
                         .foregroundColor(.gray)
                         .font(.caption)

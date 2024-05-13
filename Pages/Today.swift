@@ -23,8 +23,12 @@ struct Today: View {
                                     .padding(.horizontal)
                                 Spacer()
                             }.padding(.horizontal).padding(.top)
-                            RequestCardAtToday(requestTitle: "Care sequence", requestTime: "11:00 am")
-                            RequestCardAtToday(requestTitle: "Face-to-face consultation", requestTime: "4:00 pm")
+                            NavigationLink(destination: ServiceDetail()) {
+                                RequestCardAtToday(requestTitle: "Care sequence", requestTime: "11:00 am")
+                            }
+                            NavigationLink(destination: ServiceDetail()) {
+                                RequestCardAtToday(requestTitle: "Face-to-face consultation", requestTime: "4:00 pm")
+                            }
                         }
                         Divider().padding()
                         Group {
@@ -36,9 +40,15 @@ struct Today: View {
                                     .padding(.horizontal)
                                 Spacer()
                             }.padding(.horizontal)
-                            RequestCardAtToday(requestTitle: "Volunteer evaluating", requestTime: "3 days later")
-                            RequestCardAtToday(requestTitle: "Customize service", requestTime: "18th May")
-                            RequestCardAtToday(requestTitle: "Cooking", requestTime: "29th May")
+                            NavigationLink(destination: ServiceDetail()) {
+                                RequestCardAtToday(requestTitle: "Volunteer evaluating", requestTime: "3 days later")
+                            }
+                            NavigationLink(destination: ServiceDetail()) {
+                                RequestCardAtToday(requestTitle: "Customize service", requestTime: "18th May")
+                            }
+                            NavigationLink(destination: ServiceDetail()) {
+                                RequestCardAtToday(requestTitle: "Cooking", requestTime: "29th May")
+                            }
                             
                             Button{} label: {
                                 HStack {

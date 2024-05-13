@@ -11,7 +11,7 @@ struct ContentView: View {
                 case 0:
                     Today()
                 case 1:
-                    Text("message")
+                    Notifications()
                 case 2:
                     Text("Profile")
                 default:
