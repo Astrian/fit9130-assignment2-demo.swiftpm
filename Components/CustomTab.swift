@@ -13,6 +13,7 @@ struct CustomTab: View {
     
     var body: some View {
         VStack {
+            Divider()
             HStack {
                 HStack {
                     Button {
@@ -20,10 +21,12 @@ struct CustomTab: View {
                     } label: {
                         if selection == 0 {
                             Image(systemName: "calendar.day.timeline.left")
+                                .font(Font(UIFont.systemFont(ofSize: 18)))
                                 .foregroundStyle(.tint)
                                 
                         } else {
                             Image(systemName: "calendar.day.timeline.left")
+                                .font(Font(UIFont.systemFont(ofSize: 18)))
                                 .foregroundStyle(.gray)
                         }
                         
@@ -33,11 +36,19 @@ struct CustomTab: View {
                         self.selection = 1
                     } label: {
                         if selection == 1 {
-                            Image(systemName: "envelope.fill")
-                                .foregroundStyle(.tint)
+                            ZStack {
+                                Image(systemName: "bell.fill")
+                                    .font(Font(UIFont.systemFont(ofSize: 18)))
+                                    .foregroundStyle(.tint)
+                            }
                         } else {
-                            Image(systemName: "envelope.fill")
-                                .foregroundStyle(.gray)
+                            ZStack {
+                                Image(systemName: "bell.badge.fill")
+                                    .renderingMode(.template)
+                                    .foregroundStyle(.tint, .gray)
+                                    .font(Font(UIFont.systemFont(ofSize: 18)))
+                                    
+                            }
                         }
                     }.frame(width: 52)
                     
@@ -46,9 +57,11 @@ struct CustomTab: View {
                     } label: {
                         if selection == 2 {
                             Image(systemName: "person.fill")
+                                .font(Font(UIFont.systemFont(ofSize: 18)))
                                 .foregroundStyle(.tint)
                         } else {
                             Image(systemName: "person.fill")
+                                .font(Font(UIFont.systemFont(ofSize: 18)))
                                 .foregroundStyle(.gray)
                         }
                     }.frame(width: 52)
@@ -60,12 +73,12 @@ struct CustomTab: View {
                     self.showAddTaskSheet.toggle()
                 } label: {
                     Image(systemName: "plus")
-                        .frame(width: 36, height: 36)
+                        .frame(width: 28, height: 28)
                         .foregroundStyle(.white)
                         .padding(.all, 8)
                 }.background(.tint).clipShape(Circle()).shadow(radius: 2)
                 
-            }.padding(.vertical, 8).padding(.horizontal)
-        }.frame(minWidth: 0, maxWidth: .infinity).background(.thinMaterial)
+            }.padding(.vertical, 2).padding(.horizontal)
+        }.frame(minWidth: 0, maxWidth: .infinity).background(.regularMaterial)
     }
 }
