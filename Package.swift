@@ -8,19 +8,19 @@ import PackageDescription
 import AppleProductTypes
 
 let package = Package(
-    name: "fit9130-assignment2-demo",
+    name: "MyCareConn",
     platforms: [
         .iOS("16.0")
     ],
     products: [
         .iOSApplication(
-            name: "fit9130-assignment2-demo",
+            name: "MyCareConn",
             targets: ["AppModule"],
             bundleIdentifier: "moe.astrian.fit9130-assignment2-demo",
             teamIdentifier: "U496NXS4BR",
             displayVersion: "1.0",
             bundleVersion: "1",
-            appIcon: .placeholder(icon: .carrot),
+            appIcon: .asset("AppIcon"),
             accentColor: .asset("AccentColor"),
             supportedDeviceFamilies: [
                 .pad,

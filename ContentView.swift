@@ -14,7 +14,7 @@ struct ContentView: View {
                 case 1:
                     Notifications()
                 case 2:
-                    Text("Profile")
+                    Profile(showTab: self.$showTab)
                 default:
                     Text("error")
                 }
@@ -24,7 +24,7 @@ struct ContentView: View {
                 Spacer()
                 CustomTab(selection: $selection, showAddTaskSheet: $showAddTaskSheet)
                     .offset(y: self.showTab ? 0 : 100)
-                    .animation(.easeInOut, value: self.showTab)
+                    .animation(.easeInOut(duration: 0.35), value: self.showTab)
             }
         }
         .sheet(isPresented: $showAddTaskSheet) {
