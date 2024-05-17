@@ -57,6 +57,12 @@ struct Diary: View {
             } header: {
                 Text("Attactments")
             }
+            
+            Section {
+                NavigationLink(destination: TaskComments()) {
+                    Text("Comments")
+                }
+            }
         }
             .navigationTitle("Diary")
             .navigationBarTitleDisplayMode(.inline)
