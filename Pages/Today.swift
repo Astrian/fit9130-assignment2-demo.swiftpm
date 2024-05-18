@@ -10,6 +10,8 @@ import SwiftUI
 struct Today: View {
     @Binding var showTab: Bool
     @State private var showDetail = false
+    @State private var showQuickSettings = false
+    @State private var aer = false
     
     var body: some View {
         if #available(iOS 17.0, *) {
@@ -18,6 +20,29 @@ struct Today: View {
                         Color("ListBackground").edgesIgnoringSafeArea(.all)
                         ScrollView {
                             VStack {
+                                VStack {
+                                    HStack {
+                                        Text("Quick Settings")
+                                            .textCase(.uppercase)
+                                            .foregroundColor(.gray)
+                                            .font(.caption)
+                                            .padding(.horizontal)
+                                        Spacer()
+                                    }
+                                    Toggle("Automatally entry requests", isOn: self.$aer)
+                                        .padding()
+                                        .background(.white)
+                                        .cornerRadius(4)
+                                        .shadow(color: Color.black.opacity(0.2), radius: 2, x:0, y:1)
+                                    HStack {
+                                        Text("When this toggle on, your requests will be autmatcally entried.")
+                                            .foregroundColor(.gray)
+                                            .font(.caption)
+                                            .padding(.horizontal)
+                                        Spacer()
+                                    }
+                                }.padding(.horizontal)
+                                Divider().padding()
                                 Group {
                                     HStack {
                                         Text("Upcoming Requests at Today")
@@ -73,7 +98,7 @@ struct Today: View {
                                     }
                                 }
                                 
-                            }
+                            }.padding(.bottom, 80)
                         }
                     }
                     .onChange(of: self.showDetail) {
@@ -90,4 +115,3 @@ struct Today: View {
         }
     }
 }
-
