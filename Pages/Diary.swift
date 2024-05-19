@@ -8,7 +8,13 @@
 import SwiftUI
 import Charts
 
+enum DiaryType {
+    case excrise
+    case cooking
+}
+
 struct Diary: View {
+    @State var diaryType: DiaryType
     @State private var heartbeats = heartbeatSim(startHeartbeat: 75, peakHeartbeat: 120, endHeartbeat: 86)
     
     var body: some View {
@@ -18,14 +24,31 @@ struct Diary: View {
                     HStack {
                         VStack(alignment: .leading) {
                             Text("Service").font(.system(.body, design: .rounded))
-                            Text("Excerise").font(.system(.title, design: .rounded)).bold()
+                            switch self.diaryType {
+                            case .excrise:
+                                Text("Excerise").font(.system(.title, design: .rounded)).bold()
+                            case .cooking:
+                                Text("Cooking").font(.system(.title, design: .rounded)).bold()
+                            }
+                            
                         }
                         Spacer()
-                        Image(systemName: "figure.run.circle")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 60)
-                            .foregroundColor(.accentColor)
+                        
+                        switch self.diaryType {
+                        case .excrise:
+                            Image(systemName: "figure.run.circle")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 60)
+                                .foregroundColor(.accentColor)
+                        case .cooking:
+                            Image(systemName: "fork.knife.circle")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 60)
+                                .foregroundColor(.accentColor)
+                        }
+                        
                     }
                     .padding(.vertical)
                     
@@ -39,7 +62,8 @@ struct Diary: View {
                             Spacer()
                         }
                         
-                        VStack {
+                        switch (self.diaryType) {
+                        case .excrise:
                             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 2) {
                                 HStack {
                                     VStack(alignment: .leading) {
@@ -63,33 +87,65 @@ struct Diary: View {
                                     Spacer()
                                 }
                             }.padding()
+                            .background()
+                            .cornerRadius(4)
+                        case .cooking:
+                            VStack(spacing: 16) {
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text("11 May 2024").font(.system(size: 26, design: .rounded)).foregroundStyle(Color.accentColor)
+                                        Text("Time").font(.caption)
+                                    }
+                                    Spacer()
+                                }
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text("Launch").font(.system(size: 26, design: .rounded)).foregroundStyle(Color.accentColor)
+                                        Text("Meal type").font(.caption)
+                                    }
+                                    Spacer()
+                                }
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text("15’ 24”").font(.system(size: 26, design: .rounded)).foregroundStyle(Color.accentColor)
+                                        Text("Duration").font(.caption)
+                                    }
+                                    Spacer()
+                                }
+                            }.padding()
+                                .background()
+                                .cornerRadius(4)
                         }
-                        .background()
-                        .cornerRadius(4)
                     }.padding(.bottom)
                     
-                    VStack {
-                        HStack {
-                            Text("Heart rate information")
-                                .font(.callout)
-                                .textCase(.uppercase)
-                                .foregroundColor(.gray)
-                                .padding(.horizontal)
-                            Spacer()
-                        }
-                        
+                    switch (self.diaryType) {
+                    case .excrise:
                         VStack {
-                            Chart(self.heartbeats) {
-                                BarMark(
-                                    x: .value("Minute after excrise", $0.id),
-                                    yStart: .value("Max heart beats", $0.max),
-                                    yEnd: .value("Min heart beats", $0.min)
-                                )
+                            HStack {
+                                Text("Heart rate information")
+                                    .font(.callout)
+                                    .textCase(.uppercase)
+                                    .foregroundColor(.gray)
+                                    .padding(.horizontal)
+                                Spacer()
                             }
-                        }
-                        .padding()
-                        .background()
-                        .cornerRadius(4)
+                            
+                            VStack {
+                                Chart(self.heartbeats) {
+                                    BarMark(
+                                        x: .value("Minute after excrise", $0.id),
+                                        yStart: .value("Max heart beats", $0.max),
+                                        yEnd: .value("Min heart beats", $0.min)
+                                    )
+                                }
+                            }
+                            .padding()
+                            .background()
+                            .cornerRadius(4)
+                        }.padding(.bottom)
+                        
+                    case .cooking:
+                        EmptyView()
                     }
                     
                     VStack {
@@ -147,6 +203,6 @@ struct Diary: View {
 
 #Preview {
     NavigationView{
-        Diary()
+        Diary(diaryType: .cooking)
     }
 }

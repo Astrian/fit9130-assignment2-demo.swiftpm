@@ -42,7 +42,7 @@ struct ServiceDetail: View {
             }
             
             Section {
-                NavigationLink(destination: Diary()) {
+                NavigationLink(destination: Diary(diaryType: .excrise)) {
                     Text("View diary")
                 }
             }
