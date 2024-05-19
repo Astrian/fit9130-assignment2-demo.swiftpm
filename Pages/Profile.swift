@@ -48,3 +48,7 @@ struct Profile: View {
         }
     }
 }
+
+#Preview {
+    Profile(showTab: .constant(false))
+}

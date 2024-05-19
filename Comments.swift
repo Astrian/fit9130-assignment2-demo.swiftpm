@@ -12,7 +12,7 @@ struct Comments: View {
     @State var content: String
     @State var time: String
     @State var identity: String
-    @State var image: Bool
+    @State var image: String?
     
     var body: some View {
         HStack(alignment: .top) {
@@ -33,9 +33,9 @@ struct Comments: View {
                     Spacer()
                 }
                 
-                if self.image {
+                if self.image != nil {
                     HStack {
-                        Image("Service Image")
+                        Image(self.image ?? "")
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 100, height: 100)
@@ -50,5 +50,5 @@ struct Comments: View {
 }
 
 #Preview {
-    Comments(username: "Linda Sabastian", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum ipsum et lacinia finibus.", time: "3m", identity: "Volunteer", image: true)
+    Comments(username: "Linda Sabastian", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum ipsum et lacinia finibus.", time: "3m", identity: "Volunteer", image: "Service Image - Excrise")
 }

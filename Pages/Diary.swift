@@ -172,11 +172,11 @@ struct Diary: View {
                     }
                     
                     VStack {
-                        Comments(username: "Linda Sabastian", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum ipsum et lacinia finibus.", time: "3m", identity: "Volunteer", image: true)
+                        Comments(username: "Linda Sabastian", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum ipsum et lacinia finibus.", time: "3m", identity: "Volunteer", image: self.diaryType == .excrise ? "Service Image - Excrise" : "Service Image - Cooking")
                         Divider().padding(.leading).padding(.leading, 40)
-                        Comments(username: "Linda Sabastian", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum ipsum et lacinia finibus.", time: "3m", identity: "Family member", image: false)
+                        Comments(username: "Linda Sabastian", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum ipsum et lacinia finibus.", time: "3m", identity: "Family member", image: nil)
                         Divider().padding(.leading).padding(.leading, 40)
-                        Comments(username: "Linda Sabastian", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum ipsum et lacinia finibus.", time: "3m", identity: "Senior", image: false)
+                        Comments(username: "Linda Sabastian", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum ipsum et lacinia finibus.", time: "3m", identity: "Senior", image: nil)
                     }.background().cornerRadius(4)
                     
                     HStack {
