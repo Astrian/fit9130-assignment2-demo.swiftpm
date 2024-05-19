@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ServiceDetail: View {
+    @State private var sericeType: DiaryType? = nil
+    
     var body: some View {
         List {
             Section {
@@ -42,11 +44,20 @@ struct ServiceDetail: View {
             }
             
             Section {
-                NavigationLink(destination: Diary(diaryType: .excrise)) {
+                NavigationLink(destination: Diary(diaryType: .exercise)) {
                     Text("View diary")
                 }
             }
         } .navigationTitle("Service detail")
             .navigationBarTitleDisplayMode(.inline)
+            .onAppear {
+                self.sericeType = self.getRandomDiaryType()
+            }
+    }
+    
+    func getRandomDiaryType() -> DiaryType {
+        let allCases: [DiaryType] = [.exercise, .cooking]  // 手动创建枚举值数组
+        let randomIndex = Int.random(in: 0..<allCases.count)
+        return allCases[randomIndex]
     }
 }

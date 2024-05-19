@@ -9,7 +9,7 @@ import SwiftUI
 import Charts
 
 enum DiaryType {
-    case excrise
+    case exercise
     case cooking
 }
 
@@ -25,7 +25,7 @@ struct Diary: View {
                         VStack(alignment: .leading) {
                             Text("Service").font(.system(.body, design: .rounded))
                             switch self.diaryType {
-                            case .excrise:
+                            case .exercise:
                                 Text("Excerise").font(.system(.title, design: .rounded)).bold()
                             case .cooking:
                                 Text("Cooking").font(.system(.title, design: .rounded)).bold()
@@ -35,7 +35,7 @@ struct Diary: View {
                         Spacer()
                         
                         switch self.diaryType {
-                        case .excrise:
+                        case .exercise:
                             Image(systemName: "figure.run.circle")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -63,7 +63,7 @@ struct Diary: View {
                         }
                         
                         switch (self.diaryType) {
-                        case .excrise:
+                        case .exercise:
                             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 2) {
                                 HStack {
                                     VStack(alignment: .leading) {
@@ -119,7 +119,7 @@ struct Diary: View {
                     }.padding(.bottom)
                     
                     switch (self.diaryType) {
-                    case .excrise:
+                    case .exercise:
                         VStack {
                             HStack {
                                 Text("Heart rate information")
@@ -133,7 +133,7 @@ struct Diary: View {
                             VStack {
                                 Chart(self.heartbeats) {
                                     BarMark(
-                                        x: .value("Minute after excrise", $0.id),
+                                        x: .value("Minute after exercise", $0.id),
                                         yStart: .value("Max heart beats", $0.max),
                                         yEnd: .value("Min heart beats", $0.min)
                                     )
@@ -172,7 +172,7 @@ struct Diary: View {
                     }
                     
                     VStack {
-                        Comments(username: "Linda Sabastian", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum ipsum et lacinia finibus.", time: "3m", identity: "Volunteer", image: self.diaryType == .excrise ? "Service Image - Excrise" : "Service Image - Cooking")
+                        Comments(username: "Linda Sabastian", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum ipsum et lacinia finibus.", time: "3m", identity: "Volunteer", image: self.diaryType == .exercise ? "Service Image - exercise" : "Service Image - Cooking")
                         Divider().padding(.leading).padding(.leading, 40)
                         Comments(username: "Linda Sabastian", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum ipsum et lacinia finibus.", time: "3m", identity: "Family member", image: nil)
                         Divider().padding(.leading).padding(.leading, 40)
