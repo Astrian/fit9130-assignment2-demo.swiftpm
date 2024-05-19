@@ -9,7 +9,8 @@ import SwiftUI
 
 struct Today: View {
     @Binding var showTab: Bool
-    @State private var showDetail = false
+    @State private var showDetailExercise = false
+    @State private var showDetailCooking = false
     @State private var showQuickSettings = false
     @State private var aer = false
     
@@ -55,12 +56,12 @@ struct Today: View {
                                     RequestCardAtToday(requestTitle: "Care sequence", requestTime: "11:00 am")
                                         .onTapGesture {
                                             self.showTab = false
-                                            self.showDetail = true
+                                            self.showDetailExercise = true
                                         }
                                     RequestCardAtToday(requestTitle: "Face-to-face consultation", requestTime: "4:00 pm")
                                         .onTapGesture {
                                             self.showTab = false
-                                            self.showDetail = true
+                                            self.showDetailExercise = true
                                         }
                                 }
                                 Divider().padding()
@@ -76,17 +77,17 @@ struct Today: View {
                                     RequestCardAtToday(requestTitle: "Volunteer evaluating", requestTime: "3 days later")
                                         .onTapGesture {
                                             self.showTab = false
-                                            self.showDetail = true
+                                            self.showDetailExercise = true
                                         }
                                     RequestCardAtToday(requestTitle: "Customize service", requestTime: "18th May")
                                         .onTapGesture {
                                             self.showTab = false
-                                            self.showDetail = true
+                                            self.showDetailExercise = true
                                         }
                                     RequestCardAtToday(requestTitle: "Cooking", requestTime: "29th May")
                                         .onTapGesture {
                                             self.showTab = false
-                                            self.showDetail = true
+                                            self.showDetailCooking = true
                                         }
                                     
                                     Button{} label: {
@@ -101,11 +102,17 @@ struct Today: View {
                             }.padding(.bottom, 80)
                         }
                     }
-                    .onChange(of: self.showDetail) {
-                        self.showTab = !self.showDetail
+                    .onChange(of: self.showDetailExercise) {
+                        self.showTab = !self.showDetailExercise
                     }
-                    .navigationDestination(isPresented: self.$showDetail) {
-                        ServiceDetail()
+                    .onChange(of: self.showDetailCooking) {
+                        self.showTab = !self.showDetailCooking
+                    }
+                    .navigationDestination(isPresented: self.$showDetailExercise) {
+                        ServiceDetail(sericeType: .exercise)
+                    }
+                    .navigationDestination(isPresented: self.$showDetailCooking) {
+                        ServiceDetail(sericeType: .cooking)
                     }
                     .navigationTitle("Today")
                 }
