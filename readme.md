@@ -13,7 +13,7 @@ You can run this SwiftUI prototype with Xcode on a macOS, or Swift Playground on
 
 - Make sure you downloaded Xcode on macOS, or Swift Playground on iPad. Both can be downloaded from the App Store for free.
 - `git clone git@github.com:Astrian/fit9130-assignment2-demo.swiftpm.git` or download the whole project as a zip file and unzip it.
-- Make sure the name of the folder you cloned or unzipped ends with `.swiftpm``, which macOS and iPadOS will distinguish the folder as a Swift Playground Package.
+- Make sure the name of the folder you cloned or unzipped ends with `.swiftpm`, which macOS and iPadOS will distinguish the folder as a Swift Playground Package.
 - Double-click the `.swiftpm` package (on macOS) or open it with the Swift Playground app (iPad).
 - Choose the target which the prototype will run - if you open it with Xcode, you can choose the run target with either the iPhone Simulator or the real iPhone. Otherwise, you can only run on your iPad.
 - Click the “Run” button (as a “play” triangle) and see the result on the target you choose.
