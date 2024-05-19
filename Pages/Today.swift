@@ -31,7 +31,7 @@ struct Today: View {
                                     }
                                     Toggle("Automatally entry requests", isOn: self.$aer)
                                         .padding()
-                                        .background(.white)
+                                        .background()
                                         .cornerRadius(4)
                                         .shadow(color: Color.black.opacity(0.2), radius: 2, x:0, y:1)
                                     HStack {
