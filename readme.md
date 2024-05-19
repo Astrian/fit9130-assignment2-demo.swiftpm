@@ -9,7 +9,7 @@ This is the repository of SwiftUI’s high-fidelity prototype for Assignment 2 o
 The prototype illustrates an app/service called “MyCareConnect”, which is used for senior care. There are three identities, seniors, volunteers and family members, who can use this app to make requests, share life or communicate.
 
 ## Run this prototype
-You can run this SwiftUI prototype with Xcode on a macOS, or Swift Playground on an iPad (theoretically, not verified).
+You can run this SwiftUI prototype with Xcode on a macOS, or Swift Playground on an iPad (theoretically, not verified). No Apple Developer Program (paid, US$99 per year) is required.
 
 - Make sure you downloaded Xcode on macOS, or Swift Playground on iPad. Both can be downloaded from the App Store for free.
 - `git clone git@github.com:Astrian/fit9130-assignment2-demo.swiftpm.git` or download the whole project as a zip file and unzip it.
